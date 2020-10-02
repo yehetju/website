@@ -1,0 +1,36 @@
+@font-face{
+  font-family: xingkai;
+  src: url('../fonts/xingkai.ttf'); /* IE9 */
+}
+.region{
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto 0 auto;
+  border: 1px solid lightblue;
+}
+.region-head{
+  font-size: 16rem;
+  background-color: lightskyblue;
+  color: white;
+  padding: 14px;
+  font-family: "microsoft yahei";
+  text-align: left;
+}
+.episode{
+  font-family: xingkai, STXingkai, STKaiti, KaiTi, sans-serif;
+  text-align: center;
+  word-wrap: break-word;
+  color: #333;
+}
+.episode .title{
+  font-size: 24rem;
+  padding: 14px 0;
+}
+.episode .author{
+  font-size: 16rem;
+}
+.episode .content{
+  font-size: 20rem;
+  padding: 0 14px;
+  line-height: 1.8;
+}
