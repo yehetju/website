@@ -16,6 +16,12 @@
   font-family: "microsoft yahei";
   text-align: left;
 }
+.region-content{
+  font-size: 18rem;
+  padding: 14px;
+  font-family: "microsoft yahei";
+  text-align: left;
+}
 .episode{
   font-family: xingkai, STXingkai, STKaiti, KaiTi, sans-serif;
   text-align: center;
