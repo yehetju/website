@@ -50,14 +50,14 @@
       <div class="region-head">每日英语</div>
       <div id="english" class="region-content">正在加载....</div>
       <script>
-        var today = new Date().format('yyyy-MM-dd')
+        var today = new Date().format('yyyy-MM-dd');
         $.ajax({
-          url: 'https://dict.youdao.com/infoline?mode=publish&date='+today+'&update=auto&apiversion=5.0',
+          url: 'https://apiv3.shanbay.com/weapps/dailyquote/quote/?date='+today,
           success: function(res){
-            var data = res[today][1];
-            $('#english').html('')
-            $('#english').append('<p>' + data.title + '</p>');
-            $('#english').append('<p>' + data.summary + '</p>');
+            $('#english').html(res.translation);
+          },
+          error: function(e){
+            $('#english').html(JSON.stringify(e));
           }
         })
       </script>
