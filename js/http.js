@@ -111,7 +111,7 @@ var http = (function(){
   
   function jsonp(opt){
     $.ajax({
-      url: 'http://app.xinxiangbin.club/index.php',
+      url: 'http://app.xinxiangbin.club/jsonp.php',
       type: 'get',
       data: { url: opt.url }, 
       success: function(res){
