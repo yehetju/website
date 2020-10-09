@@ -17,10 +17,11 @@
       <div id="sentence">正在加载今日诗词....</div>
       <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
       <script type="text/javascript">
-        var today = (new Date().toLocaleDateString());
+        var today = new Date().format('yyyy-MM-dd');
         
+        var data = localStorage.getItem(today)
         
-        if(!localStorage[today]){
+        if(!localStorage.getItem(today)){
           jinrishici.load(function(result) {
             // 自己的处理逻辑
             var art = result.data.origin;
@@ -31,10 +32,10 @@
             for(var i in art.content){
               $('#sentence .content').append(art.content[i]+'<br>');
             }
-            localStorage[today] = JSON.stringify(art);
+            localStorage.setItem(today, JSON.stringify(art));
           });
         }else{
-          var art = JSON.parse(localStorage[today]);
+          var art = JSON.parse(localStorage.getItem(today));
           $('#sentence').html('')
           $('#sentence').append('<div class="title">'+art.title+'</div>');
           $('#sentence').append('<div class="author">'+art.dynasty + '·' + art.author+'</div>');
@@ -50,14 +51,11 @@
       <div class="region-head">每日英语</div>
       <div id="english" class="region-content">正在加载....</div>
       <script>
-        var today = new Date().format('yyyy-MM-dd');
-        $.ajax({
-          url: 'https://apiv3.shanbay.com/weapps/dailyquote/quote/?date='+today,
+        http.jsonp({
+          url: 'https://apiv3.shanbay.com/weapps/dailyquote/quote/?date=2020-10-08',
           success: function(res){
-            $('#english').html(res.translation);
-          },
-          error: function(e){
-            $('#english').html(JSON.stringify(e));
+            $('#english').html(res.content);
+            $('#english').append('<p>' + res.translation + '</p>');
           }
         })
       </script>

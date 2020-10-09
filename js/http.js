@@ -109,11 +109,31 @@ var http = (function(){
   	 return format;
   }
   
+  function jsonp(opt){
+    $.ajax({
+      url: 'http://app.xinxiangbin.club/index.php',
+      type: 'get',
+      data: { url: opt.url }, 
+      success: function(res){
+        var json = JSON.parse(res.replace(/<div.*<\/div>/g, ''));
+        if(opt.success){
+          opt.success(json)
+        }
+      },
+      error: function(e){
+        if(opt.error){
+          opt.error(e)
+        }
+      }
+    })
+  }
+  
   return {
     baseUrl: baseUrl,
     getImgPath: getImgPath,
     deepClone: deepClone,
     get: get,
-    post: post
+    post: post,
+    jsonp: jsonp
   }
 })();
