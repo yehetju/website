@@ -52,7 +52,7 @@
       <div id="english" class="region-content">正在加载....</div>
       <script>
         http.jsonp({
-          url: 'https://apiv3.shanbay.com/weapps/dailyquote/quote/?date=2020-10-08',
+          url: 'https://apiv3.shanbay.com/weapps/dailyquote/quote/?date=' + today,
           success: function(res){
             let div = $('#english');
             div.html('')
