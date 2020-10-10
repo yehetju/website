@@ -13,15 +13,13 @@
   </head>
   <body style="font-size: 14rem;">
     <div class="region">
-      <div class="region-head">汉语词典 &emsp;<span id="dictState"></span></div>
+      <div class="region-head">通用词典 &emsp;<span id="dictState"></span></div>
       <div class="region-content">
-        <!-- <iframe id="dict" src="http://www.zdic.net" style="width: 100%;height: 300px;"></iframe> -->
-        <iframe id="dict" style="display: none;"></iframe>
         <div class="search">
-          <input id="kwd" placeholder="请输入汉字/词/成语" onkeydown="inputKwd(event)" class="form-control" style="width: 200px;display: inline-block;" />
+          <input id="kwd" placeholder="可输入汉字/词/成语/英语单词" onkeydown="inputKwd(event)" class="form-control" style="width: 250px;display: inline-block;" />
           <button type="button" class="btn btn-default" onclick="search()">查找</button>
         </div>
-        <div id="dictResult"></div>
+        <div id="dictResult" style="overflow: hidden;"></div>
         <script>
           var searching = null;
           function search(kwd){
@@ -32,32 +30,51 @@
             }else{
               kwd = $('#kwd').val();
             }
-            $('#dictState').html('  正在查找"' + kwd + '"..')
-            searching = http.jsonp({
-              url: 'http://www.zdic.net/hans/' + kwd,
-              success: function(res){
-                var data = $(res).find('.dictionaries');
-                data.find('.copyright, h3, .zdict:last-of-type, .adsbygoogle, .zib-title, .zyzx, .mpuslot_b-container').remove(); // 去掉评论区
-                data.find('a').each(function(i,a){
-                  if(a.href && a.href.indexOf('/hans/') > -1){
-                    a.href = 'javascript: search("'+ a.innerText +'")';
-                    $(a).css('margin-right', '10px');
-                  }else{
-                    a.href = '#';
-                  }
-                })
-                
-                data.find('h2').css('font-size','1.1em');
-                $('#dictResult').html('');
-                $('#dictResult').append(data);
-                $('#dictState').html('')
-              }
-            })
+            $('#dictState').html('  正在查找"' + kwd + '"..');
+            if(/^[a-zA-Z]+$/.test(kwd)){
+              searchEN(kwd)
+            }else{
+              searching = http.jsonp({
+                url: 'http://www.zdic.net/hans/' + kwd,
+                success: function(res){
+                  var data = $(res).find('.dictionaries');
+                  data.find('.copyright, h3, .zdict:last-of-type, .adsbygoogle, .zib-title, .zyzx, .mpuslot_b-container').remove(); // 去掉评论区
+                  data.find('a').each(function(i,a){
+                    if(a.href && a.href.indexOf('/hans/') > -1){
+                      a.href = 'javascript: search("'+ a.innerText +'")';
+                      $(a).css('margin-right', '10px');
+                    }else{
+                      a.href = '#';
+                    }
+                  })
+                  
+                  data.find('h2').css('font-size','1.1em');
+                  $('#dictResult').html('');
+                  $('#dictResult').append(data);
+                  $('#dictState').html('')
+                }
+              })
+            }
           }
           function inputKwd(e){
             if(e.code == 'Enter'){
               search();
             }
+          }
+          
+          function searchEN(kwd){
+            if(searching) searching.abort();
+            searching = http.jsonp({
+              url: 'http://www.iciba.com/word?w=' + kwd,
+              success: function(res){
+                $('#dictResult').html('');
+                $('#dictState').html('');
+                
+                var data = $(res).find('.Content_content__MqclS');
+                data.find('.Content_left__3sMc7, .TabList_tab__af76P, .jsx-1500050861, .Mean_word__3SsvB>img, .FoldBox_more__2m4cl').remove();
+                $('#dictResult').append(data);
+              }
+            })
           }
         </script>
       </div>
