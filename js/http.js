@@ -110,12 +110,18 @@ var http = (function(){
   }
   
   function jsonp(opt){
-    $.ajax({
+    return $.ajax({
       url: 'http://app.xinxiangbin.club/jsonp.php',
       type: 'get',
       data: { url: opt.url }, 
       success: function(res){
-        var json = JSON.parse(res.replace(/<div.*<\/div>/g, ''));
+        try{
+          var json = JSON.parse(res.replace(/<div.*<\/div>/g, ''));
+        }
+        catch(e){
+          var json = res;
+        }
+        
         if(opt.success){
           opt.success(json)
         }

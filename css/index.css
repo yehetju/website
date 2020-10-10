@@ -21,6 +21,8 @@
   padding: 14px;
   font-family: "microsoft yahei";
   text-align: left;
+  max-height: 900px;
+  overflow: auto;
 }
 .episode{
   font-family: xingkai, STXingkai, STKaiti, KaiTi, sans-serif;
