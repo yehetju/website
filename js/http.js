@@ -111,7 +111,7 @@ var http = (function(){
   
   function jsonp(opt){
     return $.ajax({
-      url: 'http://app.xinxiangbin.club/jsonp.php',
+      url: 'http://api.aloys.group/jsonp.php',
       type: 'get',
       data: { url: opt.url, encode: opt.encode }, 
       success: function(res){
