@@ -113,7 +113,7 @@ var http = (function(){
     return $.ajax({
       url: 'http://app.xinxiangbin.club/jsonp.php',
       type: 'get',
-      data: { url: opt.url }, 
+      data: { url: opt.url, encode: opt.encode }, 
       success: function(res){
         try{
           var json = JSON.parse(res.replace(/<div.*<\/div>/g, ''));
