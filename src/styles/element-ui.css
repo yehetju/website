@@ -1,0 +1,56 @@
+/* // 完善弹窗样式 */
+/* // to fixed https://github.com/ElemeFE/element/issues/2461 */
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+  max-width: 96%;
+  max-height: 84vh;
+  margin-top: 8vh!important;
+}
+.el-dialog .el-dialog__body{
+  max-height: calc(84vh - 110px);
+  overflow: auto;
+  padding: 5px 20px;
+}
+
+/* //  弹窗的扩展，避免过高 */
+/* $dialog-constrain-height: 84vh; */
+.dialog-form .el-dialog{
+  width: 550px;
+}
+.dialog-constrain .el-dialog{
+  max-height: 84vh;
+  margin-top: 8vh!important;
+}
+.dialog-constrain .el-dialog .el-dialog__body{
+  max-height: calc(84vh - 110px);
+  overflow: auto;
+  padding: 5px 20px;
+}
+.dialog-constrain[no-footer] .el-dialog .el-dialog__body{
+  max-height: calc(84vh - 54px);
+  padding: 5px 20px 20px 20px;
+}
+/* //  减少弹出窗口上下的padding */
+.dialog-short .el-dialog__body{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+/* //  弹窗垂直居中 */
+.dialog-center .el-dialog{
+  margin-top: 0!important;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* //  弹窗顶部的按钮样式 */
+.dialog-top-btn{
+  float: right;
+  margin-top: -25px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.dialog-constrain .dialog-top-btn, .dialog-short .dialog-top-btn{
+  margin-top: 0;
+}

@@ -1,0 +1,24 @@
+html, body{
+  margin: 0; padding: 0;
+  font-size: 1px;
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+.region{
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto 0 auto;
+  border: 1px solid lightblue;
+}
+.region-head{
+  font-size: 16rem;
+  background-color: lightskyblue;
+  color: white;
+  padding: 14px;
+  font-family: "microsoft yahei";
+  text-align: left;
+}

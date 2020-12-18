@@ -1,0 +1,38 @@
+.region-content{
+  font-size: 18rem;
+  padding: 14px;
+  font-family: "microsoft yahei";
+  text-align: left;
+}
+.region-content.constrain{
+  max-height: 70vh;
+  overflow: auto;
+}
+.episode{
+  font-family: xingkai, STXingkai, STKaiti, KaiTi, sans-serif;
+  text-align: center;
+  word-wrap: break-word;
+  color: #333;
+}
+.episode .title{
+  font-size: 24rem;
+  padding: 14px 0;
+}
+.episode .author{
+  font-size: 16rem;
+}
+.episode .content{
+  font-size: 20rem;
+  padding: 0 14px;
+  line-height: 1.8;
+}
+#english{
+  text-align: center;
+}
+.english-img{
+  text-align: center;
+}
+.english-img img{
+  width: 100%;
+  max-width: 400px;
+}
