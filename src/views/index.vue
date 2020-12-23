@@ -1,18 +1,6 @@
 <template>
   <div>
-    <!-- <div class="region">
-      <div class="region-head">通用词典 &emsp;<span id="dictState"></span></div>
-      <div class="region-content constrain">
-        <div class="search">
-          <el-input v-model="kwd" placeholder="可输入汉字/词/成语/英语单词" class="form-control" style="width: 250px;display: inline-block;" />
-          <el-button type="primary" @click="startDict">查找</el-button>
-        </div>
-        <div v-html="dictResult" style="overflow: hidden;">
-          
-        </div>
-      </div>
-    </div> -->
-    <div class="region">
+    <div class="region wow sildeInRight">
       <div class="region-head">每日诗词</div>
       <div id="sentence" class="region-content constrain episode">
         <div class="title">{{art.title}}</div>
@@ -23,7 +11,7 @@
       </div>
       
     </div>
-    <div class="region">
+    <div class="region wow sildeInRight">
       <div class="region-head">每日英语</div>
       <div id="english" class="region-content">
         <p class="english-img"><img :src="dailyEnglish.imgUrl" /></p>
@@ -35,10 +23,11 @@
 </template>
 
 <script>
+import { WOW } from '../utils/wow'
 import request from "../utils/request.js"
 import http from "../utils/http.js"
 import $ from "jquery"
-import { reactive, ref } from "vue"
+import { reactive, ref, onMounted } from "vue"
 export default {
   setup() {
     var today = new Date().format('yyyy-MM-dd');
@@ -104,6 +93,12 @@ export default {
       }
     }
     
+    onMounted(() => {
+      new WOW({
+        scrollContainer: '.app-main'
+      }).init()
+    })
+
     return {
       kwd, dictResult, art, dailyEnglish, startDict
     }
