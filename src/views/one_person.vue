@@ -5,7 +5,7 @@
       <ul><li v-for="(c, index) in info.chapterList" @click="goChap(index)">{{c.name}}</li></ul>
     </div>
     <div v-if="!showCategory">
-      <img v-for="img in info.result" :src="img" width="100%" />
+      <img v-for="img in info.result" :src="img" style="width: 100%;" />
     </div>
     <div v-if="!showCategory">
       <el-button type="primary" class="btn btn-default" @click="prev()">上一章</el-button>
