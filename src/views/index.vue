@@ -6,7 +6,7 @@
         <div class="title">{{art.title}}</div>
         <div class="author">{{art.dynasty + '·' + art.author}}</div>
         <div class="content">
-          <p v-for="p in art.content">{{p}}</p>
+          <p v-for="p in art.content" :key="p">{{p}}</p>
         </div>
       </div>
       
