@@ -1,8 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import Index from '../views/index.vue'
 import { deepClone } from '../utils/index.js'
 
-const routerHistory = createWebHistory()
+const routerHistory = createWebHashHistory()
 
 const routes = [
   {

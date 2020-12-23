@@ -2,12 +2,14 @@
   <div id="head" class="region">
     <div class="region-head">{{showCategory?'章节列表':info.chapterList[info.current].name}}</div>
     <div v-show="showCategory" class="region-content">
-      <ul><li v-for="(c, index) in info.chapterList" @click="goChap(index)">{{c.name}}</li></ul>
+      <ul><li v-for="(c, index) in info.chapterList" :key="index" @click="goChap(index)">{{c.name}}</li></ul>
     </div>
-    <div v-if="!showCategory">
-      <img v-for="img in info.result" :src="img" style="width: 100%;" />
+    <div v-if="!showCategory" style="text-align: center;">
+      <div v-for="img in info.result" :key="img">
+        <img :src="img" style="width: 100%;max-width: 550px;" />
+      </div>
     </div>
-    <div v-if="!showCategory">
+    <div v-if="!showCategory" style="text-align: center;padding: 12px 0;">
       <el-button type="primary" class="btn btn-default" @click="prev()">上一章</el-button>
       <el-button type="primary" class="btn btn-default" @click="showCategory = true">目录</el-button>
       <el-button type="primary" class="btn btn-default" @click="next()">下一章</el-button>
