@@ -68,7 +68,7 @@ export default {
         var images = eval(arrData.substr(arrData.indexOf('[')));
         for(var i in images){
           if(images[i].indexOf('/c8.jpg')>-1) continue;
-          info.result.push('http://mh.jiduo.cc/' + images[i]);
+          info.result.push('http://mh.lianzhixiu.com/' + images[i]);
         }
         showCategory.value = false;
         // 记录当前进度
