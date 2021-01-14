@@ -14,6 +14,11 @@ const routes = [
     path: '/one_person',
     component: () => import('../views/one_person.vue'),
     meta: { name: '一人之下' }
+  },
+  {
+    path: '/game',
+    component: () => import('../views/games/treasures.vue'),
+    meta: { name: 'Pixi.js' }
   }
 ]
 
